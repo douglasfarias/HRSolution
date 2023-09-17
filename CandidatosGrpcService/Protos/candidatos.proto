@@ -1,0 +1,67 @@
+syntax = "proto3";
+
+option csharp_namespace = "CandidatosGrpcService.Models";
+
+service CandidatosService {
+	rpc ListarCandidatos(ListarCandidatosRequest) returns (ListarCandidatosResponse);
+	rpc BuscarCandidato(BuscarCandidatoRequest) returns (BuscarCandidatoResponse);
+	rpc AdicionarCandidato(AdicionarCandidatoRequest) returns (AdicionarCandidatoResponse);
+	rpc EditarCandidato(EditarCandidatoRequest) returns (EditarCandidatoResponse);
+	rpc InativarCandidato(InativarCandidatoRequest) returns (InativarCandidatoResponse);
+}
+
+message Candidato {
+	string codigo = 1;
+	string nome = 2;
+	string sobrenome = 3;
+	string email = 4;
+	string telefone = 5;
+	bool inativo = 6;
+}
+
+message ListarCandidatosRequest {
+	
+}
+
+message ListarCandidatosResponse {
+	repeated Candidato Candidatos = 1;
+}
+
+message BuscarCandidatoRequest {
+	string codigo = 1;
+}
+
+message BuscarCandidatoResponse {
+	Candidato Candidato = 1;
+}
+
+message AdicionarCandidatoRequest {
+	string nome = 1;
+	string sobrenome = 2;
+	string email = 3;
+	string telefone = 4;
+}
+
+message AdicionarCandidatoResponse {
+	Candidato Candidato = 1;
+}
+
+message EditarCandidatoRequest {
+	string codigo = 1;
+	string nome = 2;
+	string sobrenome = 3;
+	string email = 4;
+	string telefone = 5;
+}
+
+message EditarCandidatoResponse {
+	Candidato Candidato = 1;
+}
+
+message InativarCandidatoRequest {
+	string codigo = 1;
+}
+
+message InativarCandidatoResponse {
+	int32 inativado = 1;
+}
